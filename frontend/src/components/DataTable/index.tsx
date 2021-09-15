@@ -5,7 +5,8 @@ import { SalePage } from "types/sale";
 import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 
-function DataTable() {
+const DataTable = () => {
+
     const [activePage, setActivePage] = useState(0);
     const [page, setPage] = useState<SalePage>({
         first: true,
@@ -20,7 +21,7 @@ function DataTable() {
             .then(response => {
                 setPage(response.data);
             });
-    });
+    }, [activePage]);
 
     const changePage = (index: number) => {
         setActivePage(index);
@@ -58,7 +59,3 @@ function DataTable() {
 }
 
 export default DataTable;
-
-function setActivePage(index: number) {
-    throw new Error("Function not implemented.");
-}
